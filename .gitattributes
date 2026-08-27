@@ -1,0 +1,51 @@
+# 1. Global defaults: Auto-detect text files and normalize line endings to LF in the repo
+* text=auto
+
+# 2. .NET / C# Specific Files
+*.cs            text diff=csharp
+*.csproj        text merge=union
+*.sln           text merge=union eol=crlf
+*.json          text
+*.config        text
+*.resx          text
+
+# 3. Web & Frontend Assets (ASP.NET Core)
+*.html          text
+*.css           text
+*.js            text
+*.ts            text
+*.tsx           text
+*.jsx           text
+*.vue           text
+*.razor         text
+
+# 4. Documentation and Configs
+*.md            text
+*.txt           text
+*.yml           text
+*.yaml          text
+*.editorconfig  text
+
+# 5. Database & SQL
+*.sql           text
+
+# 6. Binary / Executable Assets (Do not modify line endings)
+*.dll           binary
+*.pdb           binary
+*.exe           binary
+*.app           binary
+*.so            binary
+*.dylib         binary
+
+# 7. Media & Graphics
+*.png           binary
+*.jpg           binary
+*.jpeg          binary
+*.gif           binary
+*.ico           binary
+*.svg           text
+*.mp4           binary
+
+# 8. Archives
+*.zip           binary
+*.tar.gz        binary
