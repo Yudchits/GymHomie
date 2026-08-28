@@ -1,7 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<ItemGroup>
+		<ProjectReference Include="..\GymHomie.Domain.Core\GymHomie.Domain.Core.csproj" />
+	</ItemGroup>
 
 	<ItemGroup>
-		
+		<PackageReference Include="Newtonsoft.Json" />
+		<PackageReference Include="MediatR" />
+		<PackageReference Include="RabbitMQ.Client" />
 	</ItemGroup>
-	
 </Project>
