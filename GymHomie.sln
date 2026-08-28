@@ -17,13 +17,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CE3D46D9-A1F9-45ED-A235-56CACF6D3503}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymHomie.Domain.Core", "GymHomie.Domain.Core\GymHomie.Domain.Core.csproj", "{74510AD3-3774-4585-A59B-EF69BCAFBA0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GymHomie.Domain.Core", "GymHomie.Domain.Core\GymHomie.Domain.Core.csproj", "{74510AD3-3774-4585-A59B-EF69BCAFBA0B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{CD381BC3-57A7-4270-A732-EE3529933A98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymHomie.Infra.Bus", "GymHomie.Infra.Bus\GymHomie.Infra.Bus.csproj", "{E61B8BB8-A54D-4C70-85D7-1B3505857293}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GymHomie.Infra.Bus", "GymHomie.Infra.Bus\GymHomie.Infra.Bus.csproj", "{E61B8BB8-A54D-4C70-85D7-1B3505857293}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymHomie.Infra.IoC", "GymHomie.Infra.IoC\GymHomie.Infra.IoC.csproj", "{F440D455-C41D-425F-BC34-14FDE81C84BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GymHomie.Infra.IoC", "GymHomie.Infra.IoC\GymHomie.Infra.IoC.csproj", "{F440D455-C41D-425F-BC34-14FDE81C84BE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TrainingPlan", "TrainingPlan", "{42B9288C-ED34-4CEE-B3A9-CF3E0E5593FA}"
 EndProject
@@ -33,17 +33,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{83CD78B0-A84F-4E01-8DC3-E56712CA6DC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymHomie.TrainingPlan.Application", "GymHomie.TrainingPlan.Application\GymHomie.TrainingPlan.Application.csproj", "{2E874ABB-22B7-4711-A96B-9847520C4B00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GymHomie.TrainingPlan.Application", "GymHomie.TrainingPlan.Application\GymHomie.TrainingPlan.Application.csproj", "{2E874ABB-22B7-4711-A96B-9847520C4B00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymHomie.TrainingPlan.Data", "GymHomie.TrainingPlan.Data\GymHomie.TrainingPlan.Data.csproj", "{25330A20-2235-4B82-BD7A-C81F1713B30C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GymHomie.TrainingPlan.Data", "GymHomie.TrainingPlan.Data\GymHomie.TrainingPlan.Data.csproj", "{25330A20-2235-4B82-BD7A-C81F1713B30C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymHomie.TrainingPlan.Domain", "GymHomie.TrainingPlan.Domain\GymHomie.TrainingPlan.Domain.csproj", "{F9FCB2DD-B6A8-4CDC-A9D7-1F778B70A9C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GymHomie.TrainingPlan.Domain", "GymHomie.TrainingPlan.Domain\GymHomie.TrainingPlan.Domain.csproj", "{F9FCB2DD-B6A8-4CDC-A9D7-1F778B70A9C0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BFF", "BFF", "{BA035994-1027-445D-88A2-EF34242B7CE9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{E59E6D6B-6121-4D9C-93B3-A6CD20B91FF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymHomie.BFF.Web", "GymHomie.BFF.Web\GymHomie.BFF.Web.csproj", "{B3C49CAA-2314-4352-B01C-B39AF7BBFF65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GymHomie.BFF.Web", "GymHomie.BFF.Web\GymHomie.BFF.Web.csproj", "{B3C49CAA-2314-4352-B01C-B39AF7BBFF65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
