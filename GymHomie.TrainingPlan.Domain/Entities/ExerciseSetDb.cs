@@ -10,6 +10,6 @@
         public long? ExerciseCombineSetId { get; set; }
 
         public virtual ExerciseDb? Exercise { get; set; }
-        public virtual ExerciseCombineSetDb? CombineSet { get; set; }
+        public virtual ExerciseCombinedSetDb? CombinedSet { get; set; }
     }
 }

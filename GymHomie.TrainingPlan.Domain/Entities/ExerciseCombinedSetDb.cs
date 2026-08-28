@@ -2,7 +2,7 @@
 
 namespace GymHomie.TrainingPlan.Domain.Entities
 {
-    public class ExerciseCombineSetDb
+    public class ExerciseCombinedSetDb
     {
         public long Id { get; set; }
         public int Rounds { get; set; }
