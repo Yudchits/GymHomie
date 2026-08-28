@@ -2,11 +2,11 @@
 
 namespace GymHomie.TrainingPlan.Domain.Entities
 {
-    public class TrainingPlan
+    public class TrainingPlanDb
     {
         public long Id { get; set; }
         public string Title { get; set; } = null!;
 
-        public virtual ICollection<TrainingSession> Sessions { get; set; } = new List<TrainingSession>();
+        public virtual ICollection<TrainingSessionDb> Sessions { get; set; } = new List<TrainingSessionDb>();
     }
 }

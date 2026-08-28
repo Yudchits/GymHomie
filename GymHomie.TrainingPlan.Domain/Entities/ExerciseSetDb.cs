@@ -1,6 +1,6 @@
 ﻿namespace GymHomie.TrainingPlan.Domain.Entities
 {
-    public class ExerciseSet
+    public class ExerciseSetDb
     {
         public long Id { get; set; }
         public long ExerciseId { get; set; }
@@ -9,7 +9,7 @@
         public int RestTimeSeconds { get; set; }
         public long? ExerciseCombineSetId { get; set; }
 
-        public virtual Exercise? Exercise { get; set; }
-        public virtual ExerciseCombineSet? CombineSet { get; set; }
+        public virtual ExerciseDb? Exercise { get; set; }
+        public virtual ExerciseCombineSetDb? CombineSet { get; set; }
     }
 }
