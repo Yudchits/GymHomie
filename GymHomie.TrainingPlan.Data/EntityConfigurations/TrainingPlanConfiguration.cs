@@ -1,0 +1,35 @@
+﻿using GymHomie.TrainingPlan.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace GymHomie.TrainingPlan.Data.EntityConfigurations
+{
+    internal sealed class TrainingPlanConfiguration : IEntityTypeConfiguration<TrainingPlanDb>
+    {
+        public void Configure(EntityTypeBuilder<TrainingPlanDb> builder)
+        {
+            builder
+                .ToTable("TrainingPlans")
+                .HasKey(tp => tp.Id);
+
+            builder
+                .Property(tp => tp.Id)
+                .ValueGeneratedOnAdd();
+
+            builder
+                .Property(tp => tp.Title)
+                .HasMaxLength(64)
+                .IsRequired();
+
+            builder
+                .HasIndex(tp => tp.Title)
+                .IsUnique();
+
+            builder
+                .HasMany(tp => tp.Sessions)
+                .WithOne(s => s.Plan!)
+                .HasForeignKey(s => s.PlanId)
+                .OnDelete(DeleteBehavior.Cascade);
+        }
+    }
+}
