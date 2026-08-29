@@ -1,7 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<ItemGroup>
-		
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\GymHomie.TrainingPlan.Domain\GymHomie.TrainingPlan.Domain.csproj" />
 	</ItemGroup>
 
 </Project>
