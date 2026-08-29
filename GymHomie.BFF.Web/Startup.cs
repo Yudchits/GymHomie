@@ -1,3 +1,4 @@
+using GymHomie.TrainingPlan.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -17,6 +18,7 @@ namespace GymHomie.BFF.Web
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.ConfigureTrainingPlanData(Configuration);
             services.AddControllersWithViews();
         }
 
