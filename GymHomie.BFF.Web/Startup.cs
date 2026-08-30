@@ -1,3 +1,4 @@
+using GymHomie.TrainingPlan.Application;
 using GymHomie.TrainingPlan.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -18,7 +19,10 @@ namespace GymHomie.BFF.Web
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.ConfigureTrainingPlanData(Configuration);
+            services
+                .ConfigureTrainingPlanData(Configuration)
+                .ConfigureTrainingPlanApplication(Configuration);
+
             services.AddControllersWithViews();
         }
 
@@ -39,7 +43,7 @@ namespace GymHomie.BFF.Web
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Exercise}/{action=Index}/{id?}");
             });
         }
     }

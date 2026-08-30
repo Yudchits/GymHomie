@@ -5,6 +5,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\GymHomie.TrainingPlan.Application\GymHomie.TrainingPlan.Application.csproj" />
 	  <ProjectReference Include="..\GymHomie.TrainingPlan.Data\GymHomie.TrainingPlan.Data.csproj" />
 	</ItemGroup>
 

@@ -1,7 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<ItemGroup>
-		
+		<PackageReference Include="AutoMapper" />
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" />
+		<PackageReference Include="MediatR" />
+		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" />
+		<PackageReference Include="Microsoft.Extensions.Configuration" />
 	</ItemGroup>
-
+	<ItemGroup>
+	  <ProjectReference Include="..\GymHomie.TrainingPlan.Domain\GymHomie.TrainingPlan.Domain.csproj" />
+	</ItemGroup>
 </Project>
