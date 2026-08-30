@@ -1,4 +1,6 @@
 ﻿using GymHomie.TrainingPlan.Data.Context;
+using GymHomie.TrainingPlan.Data.Repositories;
+using GymHomie.TrainingPlan.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,6 +14,7 @@ namespace GymHomie.TrainingPlan.Data
             services.AddDbContext<TrainingPlanContext>(options =>
             {
                 options.UseSqlServer(configuration.GetConnectionString("TrainingPlan"));
+                options.UseLazyLoadingProxies();
             });
 
             return services;
