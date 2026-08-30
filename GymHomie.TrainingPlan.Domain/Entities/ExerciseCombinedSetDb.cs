@@ -1,13 +1,26 @@
-﻿using System.Collections.Generic;
+﻿using GymHomie.TrainingPlan.Domain.Primitives;
+using System.Collections.Generic;
 
 namespace GymHomie.TrainingPlan.Domain.Entities
 {
-    public class ExerciseCombinedSetDb
+    public class ExerciseCombinedSetDb : Entity
     {
-        public long Id { get; set; }
-        public int Rounds { get; set; }
-        public int RestTimeSeconds { get; set; }
+        public int Rounds { get; private set; }
+        public int RestTimeSeconds { get; private set; }
+        public virtual ICollection<ExerciseSetDb> Sets { get; private set; } = new List<ExerciseSetDb>();
 
-        public virtual ICollection<ExerciseSetDb> Sets { get; set; } = new List<ExerciseSetDb>();
+        //EF core
+        protected ExerciseCombinedSetDb() { }
+
+        private ExerciseCombinedSetDb(long id, int rounds, int restTimeSeconds) : base(id)
+        {
+            Rounds = rounds;
+            RestTimeSeconds = restTimeSeconds;
+        }
+
+        public static ExerciseCombinedSetDb Create(int rounds, int restTimeSeconds)
+        {
+            return new(id: 0, rounds: rounds, restTimeSeconds: restTimeSeconds);
+        }
     }
 }

@@ -1,12 +1,24 @@
-﻿using System.Collections.Generic;
+﻿using GymHomie.TrainingPlan.Domain.Primitives;
+using System.Collections.Generic;
 
 namespace GymHomie.TrainingPlan.Domain.Entities
 {
-    public class TrainingPlanDb
+    public class TrainingPlanDb : Entity
     {
-        public long Id { get; set; }
-        public string Title { get; set; } = null!;
+        public string Title { get; private set; } = null!;
+        public virtual ICollection<TrainingSessionDb> Sessions { get; private set; } = new List<TrainingSessionDb>();
 
-        public virtual ICollection<TrainingSessionDb> Sessions { get; set; } = new List<TrainingSessionDb>();
+        //EF core
+        protected TrainingPlanDb() { }
+
+        private TrainingPlanDb(long id, string title) : base(id)
+        {
+            Title = title;
+        }
+
+        public static TrainingPlanDb Create(string title)
+        {
+            return new(id: 0, title: title);
+        }
     }
 }
