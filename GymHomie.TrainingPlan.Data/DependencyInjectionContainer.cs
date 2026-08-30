@@ -17,6 +17,10 @@ namespace GymHomie.TrainingPlan.Data
                 options.UseLazyLoadingProxies();
             });
 
+            services
+                .AddTransient(typeof(IRepository<,>), typeof(Repository<,>))
+                .AddTransient<IExerciseRepository, ExerciseRepository>();
+
             return services;
         }
     }
