@@ -18,6 +18,10 @@ namespace GymHomie.TrainingPlan.Data.EntityConfigurations
                 .ValueGeneratedOnAdd();
 
             builder
+                .Property(s => s.Sets)
+                .IsRequired();
+
+            builder
                 .Property(s => s.Reps)
                 .IsRequired();
 

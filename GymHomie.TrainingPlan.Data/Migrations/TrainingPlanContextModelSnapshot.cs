@@ -79,6 +79,9 @@ namespace GymHomie.TrainingPlan.Data.Migrations
                     b.Property<long>("SessionId")
                         .HasColumnType("bigint");
 
+                    b.Property<int>("Sets")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("Weight")
                         .HasPrecision(8, 2)
                         .HasColumnType("decimal(8,2)");

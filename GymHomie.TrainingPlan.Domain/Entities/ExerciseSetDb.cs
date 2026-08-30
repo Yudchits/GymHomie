@@ -1,10 +1,12 @@
 ﻿using GymHomie.TrainingPlan.Domain.Primitives;
+using System;
 
 namespace GymHomie.TrainingPlan.Domain.Entities
 {
     public class ExerciseSetDb : Entity
     {
         public long ExerciseId { get; private set; }
+        public int Sets { get; private set; }
         public int Reps { get; private set; }
         public decimal Weight { get; private set; }
         public int RestTimeSeconds { get; private set; }
@@ -19,6 +21,7 @@ namespace GymHomie.TrainingPlan.Domain.Entities
 
         private ExerciseSetDb(long id, 
             long exerciseId, 
+            int sets,
             int reps, 
             decimal weight, 
             int restTimeSeconds,
@@ -26,6 +29,7 @@ namespace GymHomie.TrainingPlan.Domain.Entities
             long sessionId) : base (id)
         {
             ExerciseId = exerciseId;
+            Sets = sets;
             Reps = reps;
             Weight = weight;
             RestTimeSeconds = restTimeSeconds;
@@ -34,14 +38,22 @@ namespace GymHomie.TrainingPlan.Domain.Entities
         }
 
         public static ExerciseSetDb Create(long exerciseId, 
-            int reps, 
-            decimal weight, 
+            int sets,
+            int reps,
+            decimal weight,
             int restTimeSeconds,
             long? combinedSetId, 
             long sessionId)
         {
+            if (sets < 1)
+                throw new ArgumentOutOfRangeException(nameof(sets), "Sets number can't be less than 1");
+
+            if (reps < 1)
+                throw new ArgumentOutOfRangeException(nameof(reps), "Reps number can't be less than 1");
+
             return new(id: 0,
                 exerciseId: exerciseId,
+                sets: sets,
                 reps: reps,
                 weight: weight,
                 restTimeSeconds: restTimeSeconds,
