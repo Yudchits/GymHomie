@@ -104,6 +104,10 @@ namespace GymHomie.TrainingPlan.Data.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Notes")
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(64)

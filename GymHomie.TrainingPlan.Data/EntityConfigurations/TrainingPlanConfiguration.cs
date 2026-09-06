@@ -22,6 +22,10 @@ namespace GymHomie.TrainingPlan.Data.EntityConfigurations
                 .IsRequired();
 
             builder
+                .Property(tp => tp.Notes)
+                .HasMaxLength(64);
+
+            builder
                 .HasIndex(tp => tp.Title)
                 .IsUnique();
 
