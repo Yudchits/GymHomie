@@ -26,6 +26,12 @@ namespace GymHomie.TrainingPlan.Data.EntityConfigurations
                 .IsUnique();
 
             builder
+                .HasMany(tp => tp.Sets)
+                .WithOne(s => s.Plan!)
+                .HasForeignKey(s => s.PlanId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder
                 .HasMany(tp => tp.Sessions)
                 .WithOne(s => s.Plan!)
                 .HasForeignKey(s => s.PlanId)

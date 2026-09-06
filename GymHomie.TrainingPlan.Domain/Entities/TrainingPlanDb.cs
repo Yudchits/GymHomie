@@ -6,6 +6,7 @@ namespace GymHomie.TrainingPlan.Domain.Entities
     public class TrainingPlanDb : Entity
     {
         public string Title { get; private set; } = null!;
+        public virtual ICollection<ExerciseSetDb> Sets { get; private set; } = new List<ExerciseSetDb>();
         public virtual ICollection<TrainingSessionDb> Sessions { get; private set; } = new List<TrainingSessionDb>();
 
         //EF core

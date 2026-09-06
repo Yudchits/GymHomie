@@ -70,14 +70,14 @@ namespace GymHomie.TrainingPlan.Data.Migrations
                     b.Property<long>("ExerciseId")
                         .HasColumnType("bigint");
 
+                    b.Property<long>("PlanId")
+                        .HasColumnType("bigint");
+
                     b.Property<int>("Reps")
                         .HasColumnType("int");
 
                     b.Property<int>("RestTimeSeconds")
                         .HasColumnType("int");
-
-                    b.Property<long>("SessionId")
-                        .HasColumnType("bigint");
 
                     b.Property<int>("Sets")
                         .HasColumnType("int");
@@ -92,7 +92,7 @@ namespace GymHomie.TrainingPlan.Data.Migrations
 
                     b.HasIndex("ExerciseId");
 
-                    b.HasIndex("SessionId");
+                    b.HasIndex("PlanId");
 
                     b.ToTable("ExerciseSets");
                 });
@@ -147,9 +147,9 @@ namespace GymHomie.TrainingPlan.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("GymHomie.TrainingPlan.Domain.Entities.TrainingSessionDb", "Session")
+                    b.HasOne("GymHomie.TrainingPlan.Domain.Entities.TrainingPlanDb", "Plan")
                         .WithMany("Sets")
-                        .HasForeignKey("SessionId")
+                        .HasForeignKey("PlanId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -157,7 +157,7 @@ namespace GymHomie.TrainingPlan.Data.Migrations
 
                     b.Navigation("Exercise");
 
-                    b.Navigation("Session");
+                    b.Navigation("Plan");
                 });
 
             modelBuilder.Entity("GymHomie.TrainingPlan.Domain.Entities.TrainingSessionDb", b =>
@@ -184,10 +184,7 @@ namespace GymHomie.TrainingPlan.Data.Migrations
             modelBuilder.Entity("GymHomie.TrainingPlan.Domain.Entities.TrainingPlanDb", b =>
                 {
                     b.Navigation("Sessions");
-                });
 
-            modelBuilder.Entity("GymHomie.TrainingPlan.Domain.Entities.TrainingSessionDb", b =>
-                {
                     b.Navigation("Sets");
                 });
 #pragma warning restore 612, 618

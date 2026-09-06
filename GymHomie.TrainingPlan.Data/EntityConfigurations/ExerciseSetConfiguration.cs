@@ -1,7 +1,6 @@
 ﻿using GymHomie.TrainingPlan.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
 
 namespace GymHomie.TrainingPlan.Data.EntityConfigurations
 {
@@ -44,6 +43,12 @@ namespace GymHomie.TrainingPlan.Data.EntityConfigurations
                 .HasOne(s => s.CombinedSet)
                 .WithMany(cs => cs!.Sets)
                 .HasForeignKey(s => s.CombinedSetId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder
+                .HasOne(s => s.Plan)
+                .WithMany(p => p!.Sets)
+                .HasForeignKey(s => s.PlanId)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }

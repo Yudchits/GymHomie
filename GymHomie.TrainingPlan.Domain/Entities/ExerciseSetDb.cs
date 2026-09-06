@@ -11,10 +11,10 @@ namespace GymHomie.TrainingPlan.Domain.Entities
         public decimal Weight { get; private set; }
         public int RestTimeSeconds { get; private set; }
         public long? CombinedSetId { get; private set; }
-        public long SessionId { get; private set; }
+        public long PlanId { get; private set; }
         public virtual ExerciseDb? Exercise { get; private set; }
         public virtual ExerciseCombinedSetDb? CombinedSet { get; private set; }
-        public virtual TrainingSessionDb? Session { get; private set; }
+        public virtual TrainingPlanDb? Plan { get; private set; }
 
         //EF core
         protected ExerciseSetDb() { }
@@ -26,7 +26,7 @@ namespace GymHomie.TrainingPlan.Domain.Entities
             decimal weight, 
             int restTimeSeconds,
             long? combinedSetId, 
-            long sessionId) : base (id)
+            long planId) : base (id)
         {
             ExerciseId = exerciseId;
             Sets = sets;
@@ -34,7 +34,7 @@ namespace GymHomie.TrainingPlan.Domain.Entities
             Weight = weight;
             RestTimeSeconds = restTimeSeconds;
             CombinedSetId = combinedSetId;
-            SessionId = sessionId;
+            PlanId = planId;
         }
 
         public static ExerciseSetDb Create(long exerciseId, 
@@ -43,7 +43,7 @@ namespace GymHomie.TrainingPlan.Domain.Entities
             decimal weight,
             int restTimeSeconds,
             long? combinedSetId, 
-            long sessionId)
+            long planId)
         {
             if (sets < 1)
                 throw new ArgumentOutOfRangeException(nameof(sets), "Sets number can't be less than 1");
@@ -58,7 +58,7 @@ namespace GymHomie.TrainingPlan.Domain.Entities
                 weight: weight,
                 restTimeSeconds: restTimeSeconds,
                 combinedSetId: combinedSetId,
-                sessionId: sessionId);
+                planId: planId);
         }
     }
 }

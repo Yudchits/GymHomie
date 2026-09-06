@@ -7,7 +7,6 @@ namespace GymHomie.TrainingPlan.Domain.Entities
     {
         public long PlanId { get; private set; }
         public virtual TrainingPlanDb? Plan { get; private set; }
-        public virtual ICollection<ExerciseSetDb> Sets { get; private set; } = new List<ExerciseSetDb>();
 
         //EF core
         protected TrainingSessionDb() { }
