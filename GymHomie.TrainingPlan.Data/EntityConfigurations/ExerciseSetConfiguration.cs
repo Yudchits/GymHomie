@@ -1,4 +1,5 @@
-﻿using GymHomie.TrainingPlan.Domain.Entities;
+﻿using GymHomie.Domain.Core.Constants;
+using GymHomie.TrainingPlan.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -9,7 +10,7 @@ namespace GymHomie.TrainingPlan.Data.EntityConfigurations
         public void Configure(EntityTypeBuilder<ExerciseSetDb> builder)
         {
             builder
-                .ToTable("ExerciseSets")
+                .ToTable(name: "exercise_sets", schema: PostgreDbSchemas.TrainingPlan)
                 .HasKey(s => s.Id);
 
             builder

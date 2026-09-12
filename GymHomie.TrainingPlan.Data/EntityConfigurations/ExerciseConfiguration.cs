@@ -1,4 +1,5 @@
-﻿using GymHomie.TrainingPlan.Domain.Entities;
+﻿using GymHomie.Domain.Core.Constants;
+using GymHomie.TrainingPlan.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -9,7 +10,7 @@ namespace GymHomie.TrainingPlan.Data.EntityConfigurations
         public void Configure(EntityTypeBuilder<ExerciseDb> builder)
         {
             builder
-                .ToTable("Exercises")
+                .ToTable(name: "exercises", schema: PostgreDbSchemas.TrainingPlan)
                 .HasKey(e => e.Id);
 
             builder
@@ -24,6 +25,12 @@ namespace GymHomie.TrainingPlan.Data.EntityConfigurations
             builder
                 .HasIndex(e => e.Name)
                 .IsUnique();
+
+            builder
+                .HasOne(e => e.Icon)
+                .WithMany(i => i.Exercises)
+                .HasForeignKey(e => e.IconId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder
                 .HasMany(e => e.Sets)

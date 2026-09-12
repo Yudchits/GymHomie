@@ -19,7 +19,6 @@ namespace GymHomie.TrainingPlan.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(TrainingPlanContext).Assembly);
-            base.OnModelCreating(modelBuilder);
         }
     }
 }

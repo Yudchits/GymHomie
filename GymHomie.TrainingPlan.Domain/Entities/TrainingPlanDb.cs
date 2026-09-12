@@ -19,9 +19,9 @@ namespace GymHomie.TrainingPlan.Domain.Entities
             Notes = notes;
         }
 
-        public static TrainingPlanDb Create(string title, string notes)
+        public static TrainingPlanDb Create(long id, string title, string notes)
         {
-            return new(id: 0, title: title, notes: notes);
+            return new(id: id, title: title, notes: notes);
         }
     }
 }

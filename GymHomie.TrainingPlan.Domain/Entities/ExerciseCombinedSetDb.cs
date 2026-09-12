@@ -18,9 +18,9 @@ namespace GymHomie.TrainingPlan.Domain.Entities
             RestTimeSeconds = restTimeSeconds;
         }
 
-        public static ExerciseCombinedSetDb Create(int rounds, int restTimeSeconds)
+        public static ExerciseCombinedSetDb Create(long id, int rounds, int restTimeSeconds)
         {
-            return new(id: 0, rounds: rounds, restTimeSeconds: restTimeSeconds);
+            return new(id: id, rounds: rounds, restTimeSeconds: restTimeSeconds);
         }
     }
 }

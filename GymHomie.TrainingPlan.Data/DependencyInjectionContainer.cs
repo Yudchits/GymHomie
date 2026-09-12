@@ -1,4 +1,5 @@
-﻿using GymHomie.TrainingPlan.Data.Context;
+﻿using GymHomie.Domain.Core.Constants;
+using GymHomie.TrainingPlan.Data.Context;
 using GymHomie.TrainingPlan.Data.Repositories;
 using GymHomie.TrainingPlan.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -13,8 +14,12 @@ namespace GymHomie.TrainingPlan.Data
         {
             services.AddDbContext<TrainingPlanContext>(options =>
             {
-                options.UseSqlServer(configuration.GetConnectionString("TrainingPlan"));
+                options.UseNpgsql(connectionString: configuration.GetConnectionString("GymHomie"),
+                    x => x.MigrationsHistoryTable(tableName: "__ef_migrations_history", 
+                        schema: PostgreDbSchemas.Systems)
+                );
                 options.UseLazyLoadingProxies();
+                options.UseSnakeCaseNamingConvention();
             });
 
             services

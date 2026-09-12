@@ -1,5 +1,4 @@
 ﻿using GymHomie.TrainingPlan.Domain.Primitives;
-using System.Collections.Generic;
 
 namespace GymHomie.TrainingPlan.Domain.Entities
 {
@@ -16,9 +15,9 @@ namespace GymHomie.TrainingPlan.Domain.Entities
             PlanId = planId;
         }
 
-        public static TrainingSessionDb Create(long planId)
+        public static TrainingSessionDb Create(long id, long planId)
         {
-            return new(id: 0, planId: planId);
+            return new(id: id, planId: planId);
         }
     }
 }

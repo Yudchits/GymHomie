@@ -37,7 +37,8 @@ namespace GymHomie.TrainingPlan.Domain.Entities
             PlanId = planId;
         }
 
-        public static ExerciseSetDb Create(long exerciseId, 
+        public static ExerciseSetDb Create(long id, 
+            long exerciseId, 
             int sets,
             int reps,
             decimal weight,
@@ -51,7 +52,7 @@ namespace GymHomie.TrainingPlan.Domain.Entities
             if (reps < 1)
                 throw new ArgumentOutOfRangeException(nameof(reps), "Reps number can't be less than 1");
 
-            return new(id: 0,
+            return new(id: id,
                 exerciseId: exerciseId,
                 sets: sets,
                 reps: reps,

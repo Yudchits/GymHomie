@@ -3,8 +3,8 @@ using System;
 using GymHomie.TrainingPlan.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace GymHomie.TrainingPlan.Data.Migrations
 {
@@ -15,26 +15,30 @@ namespace GymHomie.TrainingPlan.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("Relational:MaxIdentifierLength", 63)
                 .HasAnnotation("ProductVersion", "5.0.17")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
             modelBuilder.Entity("GymHomie.TrainingPlan.Domain.Entities.ExerciseCombinedSetDb", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnName("id")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<int>("RestTimeSeconds")
-                        .HasColumnType("int");
+                        .HasColumnType("integer")
+                        .HasColumnName("rest_time_seconds");
 
                     b.Property<int>("Rounds")
-                        .HasColumnType("int");
+                        .HasColumnType("integer")
+                        .HasColumnName("rounds");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_exercise_combined_sets");
 
-                    b.ToTable("ExerciseCombinedSets");
+                    b.ToTable("exercise_combined_sets", "training_plan");
                 });
 
             modelBuilder.Entity("GymHomie.TrainingPlan.Domain.Entities.ExerciseDb", b =>
@@ -42,19 +46,30 @@ namespace GymHomie.TrainingPlan.Data.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnName("id")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<long>("IconId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("icon_id");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
+                        .HasColumnType("character varying(64)")
+                        .HasColumnName("name");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_exercises");
+
+                    b.HasIndex("IconId")
+                        .HasDatabaseName("ix_exercises_icon_id");
 
                     b.HasIndex("Name")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasDatabaseName("ix_exercises_name");
 
-                    b.ToTable("Exercises");
+                    b.ToTable("exercises", "training_plan");
                 });
 
             modelBuilder.Entity("GymHomie.TrainingPlan.Domain.Entities.ExerciseSetDb", b =>
@@ -62,39 +77,75 @@ namespace GymHomie.TrainingPlan.Data.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnName("id")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<long?>("CombinedSetId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasColumnName("combined_set_id");
 
                     b.Property<long>("ExerciseId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasColumnName("exercise_id");
 
                     b.Property<long>("PlanId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasColumnName("plan_id");
 
                     b.Property<int>("Reps")
-                        .HasColumnType("int");
+                        .HasColumnType("integer")
+                        .HasColumnName("reps");
 
                     b.Property<int>("RestTimeSeconds")
-                        .HasColumnType("int");
+                        .HasColumnType("integer")
+                        .HasColumnName("rest_time_seconds");
 
                     b.Property<int>("Sets")
-                        .HasColumnType("int");
+                        .HasColumnType("integer")
+                        .HasColumnName("sets");
 
                     b.Property<decimal>("Weight")
                         .HasPrecision(8, 2)
-                        .HasColumnType("decimal(8,2)");
+                        .HasColumnType("numeric(8,2)")
+                        .HasColumnName("weight");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_exercise_sets");
 
-                    b.HasIndex("CombinedSetId");
+                    b.HasIndex("CombinedSetId")
+                        .HasDatabaseName("ix_exercise_sets_combined_set_id");
 
-                    b.HasIndex("ExerciseId");
+                    b.HasIndex("ExerciseId")
+                        .HasDatabaseName("ix_exercise_sets_exercise_id");
 
-                    b.HasIndex("PlanId");
+                    b.HasIndex("PlanId")
+                        .HasDatabaseName("ix_exercise_sets_plan_id");
 
-                    b.ToTable("ExerciseSets");
+                    b.ToTable("exercise_sets", "training_plan");
+                });
+
+            modelBuilder.Entity("GymHomie.TrainingPlan.Domain.Entities.IconDb", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)")
+                        .HasColumnName("name");
+
+                    b.HasKey("Id")
+                        .HasName("pk_icons");
+
+                    b.HasIndex("Name")
+                        .IsUnique()
+                        .HasDatabaseName("ix_icons_name");
+
+                    b.ToTable("icons", "training_plan");
                 });
 
             modelBuilder.Entity("GymHomie.TrainingPlan.Domain.Entities.TrainingPlanDb", b =>
@@ -102,23 +153,28 @@ namespace GymHomie.TrainingPlan.Data.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnName("id")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("Notes")
                         .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
+                        .HasColumnType("character varying(64)")
+                        .HasColumnName("notes");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
+                        .HasColumnType("character varying(64)")
+                        .HasColumnName("title");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_training_plans");
 
                     b.HasIndex("Title")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasDatabaseName("ix_training_plans_title");
 
-                    b.ToTable("TrainingPlans");
+                    b.ToTable("training_plans", "training_plan");
                 });
 
             modelBuilder.Entity("GymHomie.TrainingPlan.Domain.Entities.TrainingSessionDb", b =>
@@ -126,16 +182,32 @@ namespace GymHomie.TrainingPlan.Data.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnName("id")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<long>("PlanId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasColumnName("plan_id");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_training_sessions");
 
-                    b.HasIndex("PlanId");
+                    b.HasIndex("PlanId")
+                        .HasDatabaseName("ix_training_sessions_plan_id");
 
-                    b.ToTable("TrainingSessions");
+                    b.ToTable("training_sessions", "training_plan");
+                });
+
+            modelBuilder.Entity("GymHomie.TrainingPlan.Domain.Entities.ExerciseDb", b =>
+                {
+                    b.HasOne("GymHomie.TrainingPlan.Domain.Entities.IconDb", "Icon")
+                        .WithMany("Exercises")
+                        .HasForeignKey("IconId")
+                        .HasConstraintName("fk_exercises_icon_db_icon_id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Icon");
                 });
 
             modelBuilder.Entity("GymHomie.TrainingPlan.Domain.Entities.ExerciseSetDb", b =>
@@ -143,17 +215,20 @@ namespace GymHomie.TrainingPlan.Data.Migrations
                     b.HasOne("GymHomie.TrainingPlan.Domain.Entities.ExerciseCombinedSetDb", "CombinedSet")
                         .WithMany("Sets")
                         .HasForeignKey("CombinedSetId")
+                        .HasConstraintName("fk_exercise_sets_exercise_combined_sets_combined_set_id")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("GymHomie.TrainingPlan.Domain.Entities.ExerciseDb", "Exercise")
                         .WithMany("Sets")
                         .HasForeignKey("ExerciseId")
+                        .HasConstraintName("fk_exercise_sets_exercises_exercise_id")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("GymHomie.TrainingPlan.Domain.Entities.TrainingPlanDb", "Plan")
                         .WithMany("Sets")
                         .HasForeignKey("PlanId")
+                        .HasConstraintName("fk_exercise_sets_training_plans_plan_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -169,6 +244,7 @@ namespace GymHomie.TrainingPlan.Data.Migrations
                     b.HasOne("GymHomie.TrainingPlan.Domain.Entities.TrainingPlanDb", "Plan")
                         .WithMany("Sessions")
                         .HasForeignKey("PlanId")
+                        .HasConstraintName("fk_training_sessions_training_plans_plan_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -183,6 +259,11 @@ namespace GymHomie.TrainingPlan.Data.Migrations
             modelBuilder.Entity("GymHomie.TrainingPlan.Domain.Entities.ExerciseDb", b =>
                 {
                     b.Navigation("Sets");
+                });
+
+            modelBuilder.Entity("GymHomie.TrainingPlan.Domain.Entities.IconDb", b =>
+                {
+                    b.Navigation("Exercises");
                 });
 
             modelBuilder.Entity("GymHomie.TrainingPlan.Domain.Entities.TrainingPlanDb", b =>
