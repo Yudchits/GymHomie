@@ -1,0 +1,38 @@
+﻿.col-main {
+    margin-top: 0.7em;
+    position: relative;
+}
+
+@media (min-width: 992px) {
+    .wrapper {
+        display: grid;
+        grid-template-columns: 320px minmax(0, 1fr);
+        gap: 1.4em;
+    }
+
+    .col-main {
+        margin-top: 0;
+    }
+}
+
+
+.card {
+    background-color: var(--primary-color);
+    padding: var(--padding);
+    border-radius: var(--radius-md);
+}
+
+.card_head h1,
+.card_head h2,
+.card_head h3,
+.card_head h4,
+.card_head h5,
+.card_head h6 {
+    color: var(--ink-3);
+    text-transform: uppercase;
+}
+
+.card_body {
+    color: var(--ink-2);
+    margin-top: 0.8rem;
+}

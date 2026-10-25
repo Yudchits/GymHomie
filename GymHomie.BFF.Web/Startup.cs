@@ -43,7 +43,7 @@ namespace GymHomie.BFF.Web
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Exercise}/{action=Index}/{id?}");
+                    pattern: "{controller=TrainingPlan}/{action=Create}/{id?}");
             });
         }
     }

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 viewport-fit=cover" />
+    <title>GymHomie - @ViewBag.Title</title>
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/_utilities.css" asp-append-version="true" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    @RenderSection(name: "Styles", required: false)
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="caret" fill="none" viewBox="0 0 24 24">
+            <path d="M6 9l6 6 6-6"></path>
+        </symbol>
+        <symbol id="trash" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"></path>
+        </symbol>
+    </svg>
+
+    <header class="appbar">
+        <div class="appbar__logo" aria-hidden="true">
+            <img src="~/assets/images/logo16x9.png" alt="GymHomie">
+        </div>
+        <div class="appbar__title">
+            <h1>@ViewBag.Title</h1>
+        </div>
+        <div class="appbar__actions"></div>
+    </header>
+
+    <main class="wrapper">
+        @RenderBody()
+    </main>
+
+    @RenderSection(name: "Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,86 @@
+﻿.exercise-dropdown {
+    margin-top: 3px;
+    background-color: var(--primary-color);
+    color: var(--ink);
+    border-radius: var(--radius-sm);
+    border: 1.5px var(--accent) solid;
+    overflow: hidden;
+    z-index: 20;
+}
+
+.exercise-dropdown__list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.exercise-dropdown__list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.exercise-dropdown__list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.exercise-dropdown__list::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 4px;
+}
+
+.exercise-dropdown__item {
+    padding: 0.5em;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.exercise-dropdown__item:hover {
+    background-color: var(--primary-light-color);
+}
+
+.exercise-dropdown__icon {
+    padding: 4px;
+    background-color: var(--background-color);
+    border-radius: 0.3em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.exercise-dropdown__icon svg {
+    color: var(--accent);
+    width: 1.5em;
+    height: auto;
+}
+
+.exercise-dropdown__text {
+    display: flex;
+    flex-direction: column;
+}
+
+.exercise-dropdown__text mark {
+    background-color: inherit;
+    color: var(--accent);
+}
+
+.exercise-dropdown__muscles {
+    display: inline-flex;
+}
+
+.exercise-dropdown__muscle {
+    font-size: 0.85em;
+    color: var(--ink-2);
+    font-weight: 300;
+}
+
+.exercise-dropdown__muscle + .exercise-dropdown__muscle::before {
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    vertical-align: middle;
+    border-radius: 50%;
+    background-color: var(--ink-2);
+    margin: 0 0.4em;
+}

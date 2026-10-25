@@ -1,0 +1,49 @@
+﻿@using System.Globalization;
+@using GymHomie.BFF.Web.ViewModels.TrainingPlan
+
+@model TrainingPlanCreateViewModel
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/trainingPlan/create.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/trainingPlan/exercise-set-create.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/trainingPlan/exercise-search.css" asp-append-version="true" />
+}
+
+@section Scripts {
+    <script type="module" src="~/js/trainingPlan/create.js" asp-append-version="true"></script>
+}
+
+@{
+    var culture = new CultureInfo("ru-RU");
+}
+
+<div class="col-side">
+    <section class="card">
+        <div class="card_head">
+            <h2>Параметры тренировки</h2>
+        </div>
+        <div class="card_body">
+            <div class="field">
+                <label for="sessionTitle">Название</label>
+                <input class="control w-100" type="text" id="sessionTitle" placeholder="Например, грудь/бицепс">
+            </div>
+            <div class="field">
+                <label for="sessionDate">День</label>
+                <select class="control w-100" id="sessionDate">
+                    @foreach (var day in DayOfWeekHelper.GetDays())
+                    {
+                        <option value="@day">@day.GetDayName(culture)</option>
+                    }
+                </select>
+            </div>
+            <div class="field">
+                <label for="sessionNote">Заметки</label>
+                <textarea class="control w-100" id="sessionNote" placeholder="Разминка 8 минут, техника в приоритете..."></textarea>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="col-main">
+    <ul class="exercises" data-exercises='@Json.Serialize(Model.Exercises)'></ul>
+</div>

@@ -1,0 +1,232 @@
+﻿:root {
+    --background-color: #0f1020;
+    --primary-color: #191b31;
+    --primary-light-color: #22243d;
+    --ink: #EDF0FF;
+    --ink-2: #a9adcb;
+    --ink-3: #7b7f9e;
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --padding: 0.8em;
+    --accent: #8a7bff;
+    --red-color: #e0435c;
+    --accent-soft: #26244a;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--ink-3);
+    min-height: 100%;
+    font: 400 16px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 1em;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5em;
+}
+
+svg {
+    color: var(--ink-2);
+    width: 1em;
+    height: 1em;
+    font-size: 1.5em;
+}
+
+.appbar {
+    font-size: 1rem;
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 7px;
+    color: var(--ink);
+    padding: calc(10px + env(safe-area-inset-top, 0px)) 16px 10px;
+    background: color-mix(in srgb, var(--primary-color) 88%, transparent);
+    backdrop-filter: saturate(180%) blur(7px);
+    border-bottom: 1px solid var(--line);
+    z-index: 40;
+}
+
+.appbar__logo {
+    display: inline-flex;
+    align-items: center;
+}
+
+.appbar__logo img {
+    height: 2.5em;
+}
+
+.wrapper {
+    min-height: 100%;
+    padding: 1em;
+    max-width: 1150px;
+    margin: 0 auto;
+}
+
+.icon {
+    display: inline-block;
+    width: 1.7em;
+    height: 1.7em;
+    position: relative;
+}
+
+.icon.plus-icon::before,
+.icon.plus-icon::after {
+    content: "";
+    position: absolute;
+    background-color: var(--accent);
+    top: 50%;
+    left: 50;
+    transform: translate(-50%, -50%);
+}
+
+.icon.plus-icon::before {
+    width: 0.85em;
+    height: 0.12em;
+}
+
+.icon.plus-icon::after {
+    width: 0.12em;
+    height: 0.85em;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 0.2em;
+    background-color: inherit;
+    border: 1px var(--primary-light-color) solid;
+    color: var(--ink);
+    font-weight: 500;
+    padding: var(--padding);
+    border-radius: var(--radius-sm);
+    font-size: 0.85em;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.switch {
+    position: relative;
+    width: 46px;
+    height: 26px;
+}
+
+.switch input[type=checkbox] {
+    display: none;
+    flex: none;
+}
+
+.switch:has(input:disabled) span {
+    cursor: not-allowed;
+}
+
+.switch span {
+    width: 100%;
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-md);
+    transition: .2s;
+    cursor: pointer;
+    background-color: var(--primary-color);
+}
+
+.switch span::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 3px;
+    top: 3px;
+    background-color: var(--ink);
+    border-radius: 50%;
+    transition: .2s;
+}
+
+.switch:has(input:checked) span {
+    background-color: var(--accent);
+}
+
+.switch input:checked + span::before {
+    left: 20px;
+}
+
+.field label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.control {
+    display: block;
+    font-size: 1em;
+    color: var(--ink);
+    border-radius: var(--radius-sm);
+    outline: none;
+    padding: 0.4em 0.55em;
+    background-color: var(--primary-light-color);
+    border: 1px var(--primary-light-color) solid;
+    font-family: inherit;
+    margin-top: 0.2em;
+}
+
+.control:focus {
+    background-color: var(--primary-color);
+    border-color: var(--accent);
+}
+
+select.control {
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, var(--ink-3) 50%), linear-gradient(135deg, var(--ink-3) 50%, transparent 50%);
+    background-position: calc(100% - 18.5px) 50%, calc(100% - 14px) 50%;
+    background-size: 5px 5px,5px 5px;
+    background-repeat: no-repeat;
+}
+
+select.control:focus {
+    background-image: none;
+}
+
+textarea.control {
+    field-sizing: content;
+    resize: none;
+}

@@ -1,0 +1,135 @@
+﻿.align-items-center {
+    align-items: center;
+}
+
+.border-bottom {
+    border-bottom: 1px var(--accent-soft) solid;
+}
+
+.bg-primary {
+    background-color: var(--primary-color);
+}
+
+.bg-primary-light {
+    background-color: var(--primary-light-color);
+}
+
+.bg-accent-soft {
+    background-color: var(--accent-soft);
+}
+
+.btn.btn-dashed {
+    border-style: dashed;
+}
+
+.btn.btn-hover:hover {
+    background-color: var(--accent-soft);
+}
+
+.btn.btn-borderless {
+    border: none;
+}
+
+.d-none {
+    display: none;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.text-accent {
+    color: var(--accent);
+}
+
+.text-red {
+    color: var(--red-color);
+}
+
+.text-ink {
+    color: var(--ink);
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.border-accent {
+    border-color: var(--accent);
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.ls-sm {
+    letter-spacing: 0.7px;
+}
+
+.lh-sm {
+    line-height: 1.4rem;
+}
+
+.fs-6 {
+    font-size: 0.85em;
+}
+
+.ml-1 {
+    margin-left: 0.5em;
+}
+
+.mt-1 {
+    margin-top: 0.5em;
+}
+
+.mt-2 {
+    margin-top: 0.75em;
+}
+
+.mt-3 {
+    margin-top: 1em;
+}
+
+.mt-4 {
+    margin-top: 1.25em;
+}
+
+.p-0 {
+    padding: 0;
+}
+
+.p-1 {
+    padding: 0.5em;
+}
+
+.p-2 {
+    padding: 0.75em;
+}
+
+.p-3 {
+    padding: 1em;
+}
+
+.rounded-sm {
+    border-radius: var(--radius-sm);
+}
+
+.rounded-md {
+    border-radius: var(--radius-md);
+}
+
+.icon.icon-rounded {
+    border-radius: 50%;
+}
+
+.w-100 {
+    width: 100%;
+}

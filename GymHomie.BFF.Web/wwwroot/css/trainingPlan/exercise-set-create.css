@@ -1,0 +1,17 @@
+﻿.exercises table th,
+.exercises table td {
+    padding: 0.45em 0.3em;
+}
+
+.exercises table td {
+    border-bottom: 1px #1f2238 solid;
+}
+
+.exercises:has(.switch input:checked) table th:first-child,
+.exercises:has(.switch input:checked) table td:first-child {
+    display: none;
+}
+
+.exercises:has(.switch input:checked) table td:last-child button[data-target="deleteExerciseSet"] {
+    cursor: not-allowed;
+}
