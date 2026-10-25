@@ -12,6 +12,7 @@ namespace GymHomie.TrainingPlan.Domain.Entities
         public int RestTimeSeconds { get; private set; }
         public long? CombinedSetId { get; private set; }
         public long PlanId { get; private set; }
+        public int Order { get; private set; }
         public virtual ExerciseDb? Exercise { get; private set; }
         public virtual ExerciseCombinedSetDb? CombinedSet { get; private set; }
         public virtual TrainingPlanDb? Plan { get; private set; }
@@ -26,7 +27,8 @@ namespace GymHomie.TrainingPlan.Domain.Entities
             decimal weight, 
             int restTimeSeconds,
             long? combinedSetId, 
-            long planId) : base (id)
+            long planId,
+            int order) : base (id)
         {
             ExerciseId = exerciseId;
             Sets = sets;
@@ -35,6 +37,7 @@ namespace GymHomie.TrainingPlan.Domain.Entities
             RestTimeSeconds = restTimeSeconds;
             CombinedSetId = combinedSetId;
             PlanId = planId;
+            Order = order;
         }
 
         public static ExerciseSetDb Create(long id, 
@@ -44,13 +47,17 @@ namespace GymHomie.TrainingPlan.Domain.Entities
             decimal weight,
             int restTimeSeconds,
             long? combinedSetId, 
-            long planId)
+            long planId,
+            int order)
         {
             if (sets < 1)
                 throw new ArgumentOutOfRangeException(nameof(sets), "Sets number can't be less than 1");
 
             if (reps < 1)
                 throw new ArgumentOutOfRangeException(nameof(reps), "Reps number can't be less than 1");
+
+            if (order < 1)
+                throw new ArgumentOutOfRangeException(nameof(order), "Order can't be less than 1");
 
             return new(id: id,
                 exerciseId: exerciseId,
@@ -59,7 +66,8 @@ namespace GymHomie.TrainingPlan.Domain.Entities
                 weight: weight,
                 restTimeSeconds: restTimeSeconds,
                 combinedSetId: combinedSetId,
-                planId: planId);
+                planId: planId,
+                order: order);
         }
     }
 }

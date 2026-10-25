@@ -88,6 +88,10 @@ namespace GymHomie.TrainingPlan.Data.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("exercise_id");
 
+                    b.Property<int>("Order")
+                        .HasColumnType("integer")
+                        .HasColumnName("order");
+
                     b.Property<long>("PlanId")
                         .HasColumnType("bigint")
                         .HasColumnName("plan_id");
