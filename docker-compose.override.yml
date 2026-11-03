@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  gymhomie.bff.web:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"

@@ -1,5 +1,7 @@
+using GymHomie.BFF.Web.Extensions;
 using GymHomie.TrainingPlan.Application;
 using GymHomie.TrainingPlan.Data;
+using GymHomie.TrainingPlan.Data.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -19,11 +21,11 @@ namespace GymHomie.BFF.Web
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews();
+
             services
                 .ConfigureTrainingPlanData(Configuration)
                 .ConfigureTrainingPlanApplication(Configuration);
-
-            services.AddControllersWithViews();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -31,6 +33,7 @@ namespace GymHomie.BFF.Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.MigrateDatabase<TrainingPlanContext>();
             }
 
             app.UseStaticFiles();

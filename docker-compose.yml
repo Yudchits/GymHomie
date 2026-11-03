@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  gymhomie.bff.web:
+    image: ${DOCKER_REGISTRY-}gymhomiebffweb
+    build:
+      context: .
+      dockerfile: GymHomie.BFF.Web/Dockerfile
+    ports:
+      - "5000:5000"
+      - "5001:5001"
+
+  gymhomie.database:
+    image: postgres:16.15
+    container_name: gymhomie.database
+    environment:
+      - POSTGRES_DB=gymhomie
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5432:5432
